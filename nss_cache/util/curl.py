@@ -19,7 +19,7 @@ __author__ = 'blaedd@google.com (David MacKinnon)'
 
 import logging
 import pycurl
-from io import StringIO
+from io import BytesIO
 
 from nss_cache import error
 
@@ -32,8 +32,8 @@ def CurlFetch(url, conn=None, logger=None):
         conn = pycurl.Curl()
 
     conn.setopt(pycurl.URL, url)
-    conn.body = StringIO()
-    conn.headers = StringIO()
+    conn.body = BytesIO()
+    conn.headers = BytesIO()
     conn.setopt(pycurl.WRITEFUNCTION, conn.body.write)
     conn.setopt(pycurl.HEADERFUNCTION, conn.headers.write)
     try:
