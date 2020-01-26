@@ -283,7 +283,7 @@ class UpdateGetter(object):
                     raise error.SourceUnavailable('Max retries exceeded.')
                 time.sleep(source.conf['retry_delay'])
 
-        headers = headers.split('\r\n')
+        headers = headers.decode('UTF-8').split('\r\n')
         last_modified = conn.getinfo(pycurl.INFO_FILETIME)
         self.log.debug('last modified: %s', last_modified)
         if last_modified == -1:

@@ -138,7 +138,7 @@ class ConsulMapParser(object):
         """
 
         entries = collections.defaultdict(dict)
-        for line in json.loads(cache_info.read()):
+        for line in json.loads(cache_info.decode('UTF-8')):
             key = line.get('Key', '').split('/')
             value = line.get('Value', '')
             if not value or not key:
